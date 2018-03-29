@@ -1,0 +1,26 @@
+﻿@model Vidly.ViewModels.MoviesViewModel
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+@if (Model.Movies.Count > 1)
+{
+    <h2>Movies</h2>
+    <ul>
+        @foreach (var movie in Model.Movies)
+        {
+            <li>
+                @Html.ActionLink(movie.Name, "List", "Movies", new { id = movie.Id }, null)
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <h2>Movie</h2>
+    <h3>Movie name is: @Model.Movies[0].Name</h3>
+}
+
